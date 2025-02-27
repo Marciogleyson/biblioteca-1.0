@@ -1,12 +1,13 @@
 
 let urlAPI = "https://public.franciscosensaulas.com"
 //let urlAPI = "https://public.franciscosensaulas.com/api/v1/biblioteca/autores"
-function cadastrarAutor() {
+function cadastrarAutor(c) {
     let nome = document.getElementById('nome').value;
     let nacionalidade = document.getElementById('nacionalidade').value;
     let dataNascimento = document.getElementById('dataNascimento').value;
     let messageDiv = document.getElementById('message');
-
+    
+    
     // Verifica se todos os campos foram preenchidos
     if (nome && nacionalidade && dataNascimento) {
         let autorData = {
@@ -32,4 +33,5 @@ function cadastrarAutor() {
     }
     
 }
+
 

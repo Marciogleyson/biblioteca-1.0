@@ -13,18 +13,19 @@
         <a href="index.html" class="btn btn-outline-info"><i class="fas fa-home"></i> Home</a>
     </header>
 
-    <div class="form-container">
-        <h2>Consulta de Livro</h2>
-        <form id="bookForm">
-            <label for="title">Título do Livro:</label>
-            <input type="text" id="title" name="title" required>
+    <div class="container mt-5">
+        <h1>Pesquisa de Livros</h1>
+        
+        <!-- Campo de Pesquisa -->
+        <div class="mb-3">
+            <label for="search" class="form-label">Pesquise por título ou autor:</label>
+            <input type="text" id="search" class="form-control" placeholder="Digite o título ou autor do livro" oninput="pesquisarLivros()">
+        </div>
 
-            <label for="author">Autor:</label>
-            <input type="text" id="author" name="author" required>
-
-            <button type="submit">Consultar</button>
-        </form>
-        <div id="result"></div>
+        <!-- Lista de Resultados -->
+        <div id="resultados">
+            <!-- Resultados da pesquisa aparecerão aqui -->
+        </div>
     </div>
 
     <script src="https://unpkg.com/imask"></script>
