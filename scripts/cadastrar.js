@@ -14,7 +14,7 @@ function cadastrarAutor() {
             nacionalidade: nacionalidade,
             dataNascimento: dataNascimento
         };
-
+        
         // Envia os dados para o servidor via requisição POST
         let url = `${urlAPI}/api/v1/biblioteca/autores`;
         fetch('https://public.franciscosensaulas.com/api/v1/biblioteca/autores', {
