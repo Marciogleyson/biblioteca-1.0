@@ -24,19 +24,9 @@ function cadastrarAutor() {
             },
             body: JSON.stringify(autorData)
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                messageDiv.innerHTML = `<p class="success">${data.message}</p>`;
-            } else {
-                messageDiv.innerHTML = `<p class="error">${data.message}</p>`;
-            }
-        })
-        .catch(error => {
-            messageDiv.innerHTML = `<p class="error">Erro ao cadastrar. Tente novamente.</p>`;
-            console.error('Error:', error);
-        });
-
+         alert("Cadastrado com Sucesso!!")
+         location.href = 'index.html'
+        
     } else {
         messageDiv.innerHTML = `<p class="error">Por favor, preencha todos os campos.</p>`;
     }
