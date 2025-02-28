@@ -1,44 +1,44 @@
- // Função para pesquisar livros na Open Library API
- async function pesquisarLivros() {
-    const searchValue = document.getElementById("search").value.trim();
-    const resultadosDiv = document.getElementById("resultados");
+// Função para pesquisar livros
+function pesquisarLivros() {
+    const termo = document.getElementById("pesquisaTermo").value.trim();
 
-    // Se o campo de pesquisa estiver vazio, não faça nada
-    if (!searchValue) {
-        resultadosDiv.innerHTML = '';
-        return;
+    // Verifica se o termo de pesquisa tem pelo menos 1 caractere
+    if (termo.length < 1) {
+        document.getElementById("livrosResultado").innerHTML = '';
+        return; // Não faz a pesquisa se o termo for vazio
     }
 
-    try {
-        // Fazendo a requisição para a Open Library API
-        const response = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(searchValue)}&limit=10`); //https://openlibrary.org
-        const data = await response.json();
+    // Exibe uma mensagem de carregando enquanto a pesquisa está em andamento
+    document.getElementById("livrosResultado").innerHTML = 'Carregando resultados...';
 
-        // Limpa os resultados anteriores
-        resultadosDiv.innerHTML = '';
+    // Fazendo a requisição para a API para pesquisar livros
+    fetch(`https://public.franciscosensaulas.com/api/v1/biblioteca/autores`)
+        .then(response => response.json())
+        .then(data => {
+            const livrosResultado = document.getElementById('livrosResultado');
+            livrosResultado.innerHTML = ''; // Limpa os resultados anteriores
 
-        // Verifica se existem livros encontrados
-        if (data.docs.length > 0) {
-            // Loop para exibir os livros
-            data.docs.forEach(livro => {
-                const livroElement = document.createElement("div");
-                livroElement.classList.add("card", "mb-3");
-                livroElement.innerHTML = `
-                    <div class="card-body">
-                        <h5 class="card-title">${livro.title}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">${livro.author_name ? livro.author_name.join(", ") : "Autor desconhecido"}</h6>
-                        <p class="card-text"><strong>Ano:</strong> ${livro.first_publish_year || "Data desconhecida"}</p>
-                        <p class="card-text"><strong>Link:</strong> <a href="https://openlibrary.org${livro.key}" target="_blank">Ver mais detalhes</a></p>
-                    </div>
-                `;
-                resultadosDiv.appendChild(livroElement);
-            });
-        } else {
-            resultadosDiv.innerHTML = '<p>Nenhum livro encontrado.</p>';
-        }
-    } catch (error) {
-        resultadosDiv.innerHTML = '<p>Ocorreu um erro ao buscar os dados. Tente novamente.</p>';
-        console.error("Erro na requisição para a API:", error);
-    }
+            // Filtra os dados com base no nome
+            const livrosFiltrados = data.filter(livro => 
+                livro.nome && livro.nome.toLowerCase().includes(termo.toLowerCase())
+            );
+
+            if (livrosFiltrados.length === 0) {
+                livrosResultado.innerHTML = '<li>Nenhum livro encontrado.</li>';
+            } else {
+                // Adiciona os livros encontrados na lista
+                livrosFiltrados.forEach(livro => {
+                    const li = document.createElement('li');
+                    // Exibe apenas o nome do livro ou autor
+                    // li.textContent = livro.nome || 'Título desconhecido';
+                    li.textContent = `${livro.nome || 'Título desconhecido'} por ${livro.nacionalidade || 'Nacionalidade desconhecida'} (Nascimento: ${livro.dataNascimento || 'Ano desconhecido'})`;
+                    livrosResultado.appendChild(li);
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao pesquisar livros:', error);
+            document.getElementById("livrosResultado").innerHTML = '<li>Erro ao pesquisar livros.</li>';
+        });
 }
 
