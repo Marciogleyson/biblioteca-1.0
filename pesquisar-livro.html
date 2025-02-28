@@ -12,21 +12,16 @@
     <header class="bg-dark p-2">
         <a href="index.html" class="btn btn-outline-info"><i class="fas fa-home"></i> Home</a>
     </header>
+    
+    <h1>Pesquisa de Livros</h1>
 
-    <div class="container mt-5">
-        <h1>Pesquisa de Livros</h1>
-        
-        <!-- Campo de Pesquisa -->
-        <div class="mb-3">
-            <label for="search" class="form-label">Pesquise por título ou autor:</label>
-            <input type="text" id="search" class="form-control" placeholder="Digite o título ou autor do livro" oninput="pesquisarLivros()">
-        </div>
+     <!-- Campo de pesquisa -->
+     <input type="text" id="pesquisaTermo" placeholder="Digite o título ou autor" oninput="pesquisarLivros()">
+     <button onclick="pesquisarLivros()">Pesquisar</button>
 
-        <!-- Lista de Resultados -->
-        <div id="resultados">
-            <!-- Resultados da pesquisa aparecerão aqui -->
-        </div>
-    </div>
+     <h2>Resultados da Pesquisa</h2>
+     <ul id="livrosResultado"></ul>
+    
 
     <script src="https://unpkg.com/imask"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
