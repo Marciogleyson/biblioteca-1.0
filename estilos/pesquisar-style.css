@@ -1,0 +1,24 @@
+body {
+    font-family: Arial, sans-serif;
+    
+}
+.card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+.card-body {
+    padding: 10px;
+}
+.card-title {
+    font-size: 1.25em;
+    margin-bottom: 10px;
+}
+.card-text {
+    margin: 5px 0;
+}
+.search-container {
+    margin-bottom: 20px;
+}
+    

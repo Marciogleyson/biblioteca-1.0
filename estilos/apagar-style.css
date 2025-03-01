@@ -1,0 +1,24 @@
+
+.autor {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.btn-apagar {
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+.btn-apagar-todos {
+    background-color: darkred;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-top: 20px;
+}

@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+   
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table,
+th,
+td {
+    border: 1px solid #ccc;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+}
+
+#report-table {
+    margin-top: 20px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-box-container {
+    display: flex;
+    width: 100%;
+    max-width: 400px;
+    align-items: center;
+}
+
+#search-box {
+    padding: 8px;
+    font-size: 16px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+}
+
+#generate-pdf {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+}
+
+#generate-pdf:hover {
+    background-color: #45a049;
+}
